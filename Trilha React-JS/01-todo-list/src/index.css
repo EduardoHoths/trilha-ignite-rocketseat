@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-600 text-gray-100;
+  @apply leading-[140%];
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+@media (max-width: 420px) {
+  body,
+  input,
+  textarea,
+  button {
+    font-size: 0.875rem;
+  }
+}
+@media (max-width: 375px) {
+  body,
+  input,
+  textarea,
+  buttondy {
+    font-size: 0.75rem;
+  }
+}
