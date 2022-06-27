@@ -1,5 +1,5 @@
 import { useState } from "react";
-import clipboard from "../assets/clipboard.png";
+import clipboard from "../assets/Clipboard.png";
 import { ITask } from "../interface/TaskInterface";
 import { Task } from "./Task";
 
