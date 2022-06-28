@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Checked } from "../assets/Checked";
 import { Unchecked } from "../assets/Unchecked";
 import { Trash } from "../assets/Trash";
-import { ITask } from "../interface/TaskInterface";
 
 interface TaskPros {
   finished: boolean;
