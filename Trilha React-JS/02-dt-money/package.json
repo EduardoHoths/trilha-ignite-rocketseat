@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^18.0.1",
     "@types/react-modal": "^3.13.1",
     "@types/styled-components": "^5.1.25",
     "axios": "^0.27.2",

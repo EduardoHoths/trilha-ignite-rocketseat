@@ -51,7 +51,7 @@ export const TransactionsTable = () => {
 
           {transactions.map((transaction) => {
             return (
-              <Transaction>
+              <Transaction key={transaction.id}>
                 <header>
                   <span>{transaction.title}</span>
                   <strong className={transaction.type}>

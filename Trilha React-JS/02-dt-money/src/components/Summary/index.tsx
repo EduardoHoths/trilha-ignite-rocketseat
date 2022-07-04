@@ -29,7 +29,6 @@ export const Summary = () => {
     setFirstTransaction(transactions[transactions.length - 1].createdAt);
     setLastTransaction(transactions[0].createdAt);
 
-    console.log(firstTransaction);
   }, [[], transactions]);
 
   const summary = transactions.reduce(
