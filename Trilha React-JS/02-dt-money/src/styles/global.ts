@@ -46,6 +46,19 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
   }
 
+  body::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: var(--background);
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--blue-light);
+    border-radius: 2rem;
+  }
+
   button{
     cursor: pointer;
   }
@@ -66,6 +79,10 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 600px) {
+      align-items: flex-end;
+    }
   }
 
   .react-modal-content{
@@ -75,6 +92,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 3rem;
     position: relative;
     border-radius: 0.25rem;
+    
+    @media (max-width: 600px) {
+      padding: 1.714rem;
+      border-radius: 1.143rem 1.143rem 0 0 ;
+    }
   }
 
   .react-modal-close{

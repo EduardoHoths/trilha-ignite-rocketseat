@@ -3,9 +3,34 @@ import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import totalImg from "../../assets/total.svg";
 import { useTransactions } from "../../hooks/useTransactions";
+import { useEffect, useState } from "react";
+import { format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 export const Summary = () => {
   const { transactions } = useTransactions();
+  const [lastIncome, setLastIncome] = useState("");
+  const [lastOutcome, setLastOutcome] = useState("");
+  const [firstTransaction, setFirstTransaction] = useState("");
+  const [lastTransaction, setLastTransaction] = useState("");
+
+  useEffect(() => {
+    if (transactions.length === 0) {
+      return;
+    }
+    const income = transactions.filter(
+      (transaction) => transaction.type === "deposit" && transaction.createdAt
+    )[0];
+    const outcome = transactions.filter((transaction) => transaction.type === "withdraw")[0];
+
+    setLastIncome(income.createdAt);
+    setLastOutcome(outcome.createdAt);
+
+    setFirstTransaction(transactions[transactions.length - 1].createdAt);
+    setLastTransaction(transactions[0].createdAt);
+
+    console.log(firstTransaction);
+  }, [[], transactions]);
 
   const summary = transactions.reduce(
     (acc, transaction) => {
@@ -37,6 +62,11 @@ export const Summary = () => {
             summary.deposits
           )}
         </strong>
+        {lastIncome !== "" && (
+          <span>
+            Última entrada dia {format(new Date(lastIncome), "dd 'de' LLLL", { locale: ptBR })}
+          </span>
+        )}
       </div>
       <div>
         <header>
@@ -49,6 +79,11 @@ export const Summary = () => {
             summary.withdraws
           )}
         </strong>
+        {lastOutcome !== "" && (
+          <span>
+            Última saída dia {format(new Date(lastOutcome), "dd 'de' LLLL", { locale: ptBR })}
+          </span>
+        )}
       </div>
       <div>
         <header>
@@ -60,6 +95,15 @@ export const Summary = () => {
             summary.total
           )}
         </strong>
+        {transactions.length > 0 && (
+          <span>
+            {firstTransaction !== "" &&
+              format(new Date(firstTransaction), "dd 'de' LLLL", { locale: ptBR })}{" "}
+            à{" "}
+            {lastTransaction !== "" &&
+              format(new Date(lastTransaction), "dd 'de' LLLL", { locale: ptBR })}
+          </span>
+        )}
       </div>
     </Container>
   );

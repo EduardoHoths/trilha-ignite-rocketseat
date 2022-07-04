@@ -21,15 +21,13 @@ interface TransactionsContextData {
   createTransaction: (transaction: TransactionInput) => Promise<void>;
 }
 
-const TransactionsContext = createContext<TransactionsContextData>(
-  {} as TransactionsContextData
-);
+const TransactionsContext = createContext<TransactionsContextData>({} as TransactionsContextData);
 
 export const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
-    api.get("transactions").then(({ data }) => setTransactions(data.transactions));
+    api.get("transactions").then(({ data }) => setTransactions(data.transactions.reverse()));
   }, []);
 
   async function createTransaction(transactionInput: TransactionInput) {
@@ -39,7 +37,7 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
     });
     const { transaction } = response.data;
 
-    setTransactions([...transactions, transaction]);
+    setTransactions([transaction, ...transactions]);
   }
 
   return (

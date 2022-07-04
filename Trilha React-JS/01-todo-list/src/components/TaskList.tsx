@@ -35,14 +35,14 @@ export const TaskList = ({ taskList, setTaskList }: TaskListProps) => {
   return (
     <div className="mt-16">
       <header className="flex justify-between mb-6">
-        <strong className="text-blue flex gap-2 justify-center items-center">
+        <strong className="text-blue flex gap-2 justify-center items-center text-sm">
           Tarefas criadas
-          <span className="px-2 py-[0.125rem] bg-gray-400 rounded-full">{createdTasks}</span>
+          <span className="px-2 py-[0.125rem] bg-gray-400 rounded-full text-xs">{createdTasks}</span>
         </strong>
 
-        <strong className="text-purple flex gap-2 justify-center items-center">
+        <strong className="text-purple flex gap-2 justify-center items-center text-sm">
           Concluídas
-          <span className="px-2 py-[0.125rem] bg-gray-400 rounded-full">
+          <span className="px-2 py-[0.125rem] bg-gray-400 rounded-full text-xs">
             {createdTasks > 0 ? `${finishedTasks} de ${createdTasks}` : "0"}
           </span>
         </strong>

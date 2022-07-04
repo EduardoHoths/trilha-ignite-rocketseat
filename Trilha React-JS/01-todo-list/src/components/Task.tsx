@@ -40,7 +40,7 @@ export const Task = ({ finished, task, id, changeFinishedStateOnTask, deleteTask
           </span>
         )}
       </label>
-      <span className={finished ? "text-gray-300 line-through w-full" : "text-gray-100  w-full"}>
+      <span className={finished ? "text-gray-300 line-through text-sm w-full" : "text-gray-100 text-sm w-full"}>
         {task}
       </span>
       <span className="group cursor-pointer" onClick={handleDeleteTask}>
